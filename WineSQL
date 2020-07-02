@@ -1,0 +1,35 @@
+﻿﻿create schema myschema;
+
+create table myschema.wine(
+winetype varchar(50),
+fixedacidity numeric,
+volatileacidity numeric,
+citricacid numeric,
+residualsugar numeric,
+chlorides numeric,
+freesulfurdioxide numeric,
+totalsulfurdioxide numeric,
+density numeric,
+pH numeric,
+sulphates numeric,
+alcohol numeric,
+quality numeric,
+rating varchar(50));
+
+select * from myschema.wine;
+
+select avg(alcohol) from myschema.wine;
+
+select min(freesulfurdioxide) from myschema.wine;
+
+select max(quality) from myschema.wine where winetype='Red';
+
+select citricacid, totalsulfurdioxide, quality from myschema.wine where quality =8;
+
+select citricacid, totalsulfurdioxide, quality from myschema.wine where rating ='poor';
+
+select count(*) from myschema.wine;
+
+select rating, count(winetype) from myschema.wine group by rating;
+
+select winetype, rating from myschema.wine where quality in (select max(quality) from myschema.wine);
